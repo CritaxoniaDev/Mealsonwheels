@@ -46,7 +46,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ date('Y-m-d', strtotime($delivery->created_at)) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ date('H:i:s', strtotime($delivery->created_at)) }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                @if($delivery->volunteer_name)
+                                @if($delivery->volunteer_name && $delivery->volunteer_name != 'Volunteer to be assigned')
                                 <span class="text-blue-600 font-semibold">Accepted by {{ $delivery->volunteer_name }}</span>
                                 @else
                                 <form action="{{ route('deliver#updateDelivery', $delivery->id) }}" method="GET" class="flex items-center space-x-2">

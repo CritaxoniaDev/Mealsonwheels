@@ -27,15 +27,29 @@
 						<div class="animate-fade-in">
 							<label for="menu_image" class="block text-sm font-semibold text-gray-700 mb-2">Menu Picture</label>
 							<div class="relative border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-purple-500 transition duration-300 ease-in-out">
-								<input type="file" id="menu_image" name="menu_image" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" required>
-								<div class="text-center">
+								<input type="file" id="menu_image" name="menu_image" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" required onchange="updateFileName(this)">
+								<div class="text-center" id="file-upload-content">
 									<svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
 										<path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
 									</svg>
 									<p class="mt-1 text-sm text-gray-600">Click to upload or drag and drop</p>
 								</div>
+								<p id="file-name" class="mt-2 text-sm text-gray-600 text-center"></p>
 							</div>
 						</div>
+
+						<script>
+							function updateFileName(input) {
+								const fileName = input.files[0]?.name;
+								if (fileName) {
+									document.getElementById('file-name').textContent = fileName;
+									document.getElementById('file-upload-content').style.display = 'none';
+								} else {
+									document.getElementById('file-name').textContent = '';
+									document.getElementById('file-upload-content').style.display = 'block';
+								}
+							}
+						</script>
 						<div class="animate-fade-in">
 							<label for="menu_description" class="block text-sm font-semibold text-gray-700 mb-2">Menu Description</label>
 							<textarea id="menu_description" name="menu_description" rows="5" class="w-full px-4 py-3 rounded-lg border-2 border-gray-300 focus:border-purple-500 focus:ring focus:ring-purple-200 transition duration-300 ease-in-out" placeholder="Describe your menu" required></textarea>
