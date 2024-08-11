@@ -204,9 +204,7 @@ Route::middleware(['auth', 'check.session'])->group(function () {
 
         Route::get('/updateMenu/{id}', [PartnerController::class, 'updateMenu'])->name('partner#updateMenu');
 
-        Route::post('/saveUpdate{id}', function ($id) {
-            return app()->make(PartnerController::class)->saveUpdate($id);
-        })->name('partner#saveUpdate');
+        Route::post('/saveUpdate{id}', [PartnerController::class, 'saveUpdate'])->name('partner#saveUpdate');
 
         Route::get('/AllOrderForPartner/{id}', function ($id) {
             return app()->make(OrderController::class)->AllOrderForPartner($id);
