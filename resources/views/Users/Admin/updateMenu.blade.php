@@ -1,109 +1,49 @@
+@extends('layouts.app')
 @section('title')
-    Update {{ $updateMenu->menu_title }}
+Update {{ $updateMenu->menu_title }}
 @endsection
-
-@extends('Users.Admin.layouts.app')
-
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/header.css') }}">
+@endpush
 @section('content')
-<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-
-<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'> -->
-
-<!-- Animate.css -->
-<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-<!-- Icomoon Icon Fonts-->
-<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-<!-- Bootstrap  -->
-<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-<!-- Superfish -->
-<link rel="stylesheet" href="{{ asset('css/superfish.css') }}">
-
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-
-<!-- Modernizr JS -->
-<script src="{{ asset('js/modernizr-2.6.2.min.js') }}" defer></script>
-
-		<div id="fh5co-blog-section" class="fh5co-section-gray">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-					<h3><h1>Update {{ $updateMenu->menu_title }}</h1></h3>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row row-bottom-padded-md">
-                    <div class="container">
-                        <div class="row">
-							<form action="{{ route('admin#saveUpdateMenu', $updateMenu->id) }}" method="POST" enctype="multipart/form-data">
-								@csrf
-								<div class="col-lg-6 animate-box">
-									@if ($updateMenu->menu_image)
-										<img src="{{ asset('uploads/meal/'. $updateMenu->menu_image) }}" class="img-thumbnail" alt="category image ">
-										<br>
-									@endif
-									<div>
-										<div class="form-group animate-box" style="padding-top: 10px">
-											<label for="basic-url">Menu Picture</label>
-											<input type="file" class="form-control" name="menu_image" value="{{old('menu_image', $updateMenu->menu_image) }}" required>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-6" style="padding-left: 60px">
-									<div class="row">
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Title</label>
-												<input type="text" class="form-control" placeholder="Put your menu title here" name="menu_title" value="{{ old('menu_title', $updateMenu->menu_title) }}" required>
-											</div>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<label for="basic-url">Menu Description</label>
-												<textarea class="form-control" id="" cols="30" rows="7" placeholder="Put your menu description here" name="menu_description" required>{{ old('menu_description', $updateMenu->menu_description) }}</textarea>
-											</div>
-										</div>
-										
-										<div>
-											<div class="form-group animate-box">
-												{{-- <label for="basic-url">Partner Organization</label> --}}
-                                                <input type="hidden" class="form-control" placeholder="Put your partner name here" name="partner" value="{{ $updateMenu->partner_id }}" required>
-											</div>
-										</div>
-										<div>
-											<div class="form-group animate-box">
-												<input type="submit" value="Update" class="btn btn-primary">
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-                        </div>
-                    </div>
-				</div>
-			</div>
+<section class="bg-gray-100 py-16" id="header2">
+	<div class="container mx-auto px-4">
+		<div class="text-center mb-12">
+			<h1 class="text-4xl font-bold text-indigo-700">Update {{ $updateMenu->menu_title }}</h1>
 		</div>
-		<!-- fh5co-blog-section -->
 
-	<!-- jQuery -->
-
-
-	<script src="{{ asset('js/jquery.min.js') }}" defer></script>
-	<!-- jQuery Easing -->
-	<script src="{{ asset('js/jquery.easing.1.3.js') }}" defer></script>
-	<!-- Bootstrap -->
-	<script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-	<!-- Waypoints -->
-	<script src="{{ asset('js/jquery.waypoints.min.js') }}" defer></script>
-	<script src="{{ asset('js/sticky.js') }}"></script>
-
-	<!-- Stellar -->
-	<script src="{{ asset('js/jquery.stellar.min.js') }}" defer></script>
-	<!-- Superfish -->
-	<script src="{{ asset('js/hoverIntent.js') }}" defer></script>
-	<script src="{{ asset('js/superfish.js') }}" defer></script>
-
-	<!-- Main JS -->
-	<script src="{{ asset('js/main.js') }}" defer></script>
-
+		<div class="bg-white rounded-lg shadow-xl overflow-hidden">
+			<form action="{{ route('admin#saveUpdateMenu', $updateMenu->id) }}" method="POST" enctype="multipart/form-data" class="p-8">
+				@csrf
+				<div class="flex flex-wrap -mx-4">
+					<div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
+						@if ($updateMenu->menu_image)
+						<img src="{{ asset('uploads/meal/'. $updateMenu->menu_image) }}" class="w-full h-64 object-cover rounded-lg mb-4" alt="Menu image">
+						@endif
+						<div class="mb-6">
+							<label for="menu_image" class="block text-gray-700 text-sm font-bold mb-2">Menu Picture</label>
+							<input type="file" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-indigo-500" name="menu_image" value="{{old('menu_image', $updateMenu->menu_image) }}" required>
+						</div>
+					</div>
+					<div class="w-full lg:w-1/2 px-4">
+						<div class="mb-6">
+							<label for="menu_title" class="block text-gray-700 text-sm font-bold mb-2">Menu Title</label>
+							<input type="text" class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-indigo-500" placeholder="Enter menu title" name="menu_title" value="{{ old('menu_title', $updateMenu->menu_title) }}" required>
+						</div>
+						<div class="mb-6">
+							<label for="menu_description" class="block text-gray-700 text-sm font-bold mb-2">Menu Description</label>
+							<textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-indigo-500" rows="5" placeholder="Enter menu description" name="menu_description" required>{{ old('menu_description', $updateMenu->menu_description) }}</textarea>
+						</div>
+						<input type="hidden" name="partner" value="{{ $updateMenu->partner_id }}" required>
+						<div class="text-right">
+							<button type="submit" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-300">
+								Update Menu
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
 @endsection
