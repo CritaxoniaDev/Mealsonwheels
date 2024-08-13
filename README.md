@@ -9,7 +9,7 @@
 
 # Meals on Wheels
 
-<p align="center"><img src="https://your-logo-url-here.com" width="400" alt="Meals on Wheels Logo"></p>
+<p align="center"><img src="{{ asset('images/logo.png') }}" width="400" alt="Meals on Wheels Logo"></p>
 
 ## About Meals on Wheels
 
@@ -36,11 +36,11 @@ Meals on Wheels is a web application built with Laravel, designed to facilitate 
 
 ## Technology Stack
 
-- **Framework**: Laravel 9
+- **Framework**: Laravel 11.x
 - **Frontend**: Blade templates with Tailwind CSS
 - **Database**: MySQL
 - **Authentication**: Laravel Fortify
-- **API**: RESTful API for mobile app integration
+- **API**: Stripe API for mobile app integration
 
 ## Getting Started
 
