@@ -41,7 +41,7 @@
             <table class="w-full">
                 <thead>
                     <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                        <th class="py-3 px-6 text-left">Order ID</th>
+                        <th class="py-3 px-6 text-left">Order Identification</th>
                         <th class="py-3 px-6 text-left">Menu</th>
                         <th class="py-3 px-6 text-center">Status</th>
                         <th class="py-3 px-6 text-center">Date</th>

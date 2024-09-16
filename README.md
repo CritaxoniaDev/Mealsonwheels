@@ -9,7 +9,7 @@
 
 # Meals on Wheels
 
-<p align="center"><img src="{{ asset('images/logo.png') }}" width="400" alt="Meals on Wheels Logo"></p>
+<p align="center"><img src="{{ url('images/logo.png') }}" width="400" alt="Meals on Wheels Logo"></p>
 
 ## About Meals on Wheels
 
